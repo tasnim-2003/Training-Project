@@ -5,19 +5,11 @@ from enum import Enum
 from pydantic import BaseModel, Field, model_validator
 
 
-# =========================================================
-# Course Status
-# =========================================================
-
 class CourseStatus(str, Enum):
     DRAFT = "draft"
     PUBLISHED = "published"
     ARCHIVED = "archived"
 
-
-# =========================================================
-# Create Course
-# =========================================================
 
 class CourseCreate(BaseModel):
     name: str
@@ -35,20 +27,29 @@ class CourseCreate(BaseModel):
     prerequisites: str | None = None
     registration_conditions: str | None = None
 
-    impact_wait_days: int = Field(default=0, ge=0)
+    impact_wait_days: int = Field(
+        default=0,
+        ge=0,
+    )
 
     status: CourseStatus = CourseStatus.DRAFT
 
     @model_validator(mode="after")
     def validate_dates(self):
+        today = date.today()
+
+        if self.start_date < today:
+            raise ValueError(
+                "تاريخ بداية الدورة لا يمكن أن يكون قبل تاريخ اليوم."
+            )
+
         if self.end_date < self.start_date:
-            raise ValueError("end_date must be greater than or equal to start_date")
+            raise ValueError(
+                "تاريخ نهاية الدورة لا يمكن أن يكون قبل تاريخ البداية."
+            )
+
         return self
 
-
-# =========================================================
-# Update Course
-# =========================================================
 
 class CourseUpdate(BaseModel):
     name: str | None = None
@@ -59,14 +60,24 @@ class CourseUpdate(BaseModel):
     start_date: date | None = None
     end_date: date | None = None
 
-    duration: Decimal | None = Field(default=None, gt=0)
-    seats: int | None = Field(default=None, gt=0)
+    duration: Decimal | None = Field(
+        default=None,
+        gt=0,
+    )
+
+    seats: int | None = Field(
+        default=None,
+        gt=0,
+    )
 
     target_audience: str | None = None
     prerequisites: str | None = None
     registration_conditions: str | None = None
 
-    impact_wait_days: int | None = Field(default=None, ge=0)
+    impact_wait_days: int | None = Field(
+        default=None,
+        ge=0,
+    )
 
     status: CourseStatus | None = None
 
@@ -78,14 +89,11 @@ class CourseUpdate(BaseModel):
             and self.end_date < self.start_date
         ):
             raise ValueError(
-                "end_date must be greater than or equal to start_date"
+                "تاريخ نهاية الدورة لا يمكن أن يكون قبل تاريخ البداية."
             )
+
         return self
 
-
-# =========================================================
-# Course Response
-# =========================================================
 
 class CourseResponse(BaseModel):
     id: int

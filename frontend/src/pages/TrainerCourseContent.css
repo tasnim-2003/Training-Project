@@ -1,0 +1,959 @@
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap');
+
+:root {
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  color: #17283f;
+  background: #f4f7fb;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+.trainer-content-page,
+.trainer-content-page * {
+  box-sizing: border-box;
+}
+
+.trainer-content-page {
+  min-height: 100vh;
+  direction: rtl;
+  background: #f4f7fb;
+  color: #17283f;
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  font-size: 14px;
+}
+
+.trainer-content-page button,
+.trainer-content-page input,
+.trainer-content-page textarea,
+.trainer-content-page select {
+  font: inherit;
+}
+
+.trainer-content-page button {
+  cursor: pointer;
+  transition: background .2s ease, border-color .2s ease, transform .2s ease;
+}
+
+.trainer-content-page button:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}
+
+.trainer-content-page a {
+  color: #087f8c;
+  text-decoration: none;
+}
+
+.trainer-content-page a:hover {
+  text-decoration: underline;
+}
+
+/* الشريط العلوي */
+
+.trainer-content-header {
+  min-height: 78px;
+  padding: 14px clamp(18px, 5vw, 72px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background: #10253f;
+  color: #fff;
+  border-bottom: 3px solid #1ca6a6;
+}
+
+.trainer-content-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff !important;
+}
+
+.trainer-content-brand:hover {
+  text-decoration: none !important;
+}
+
+.trainer-content-brand-mark {
+  display: grid;
+  place-items: center;
+  width: 43px;
+  height: 43px;
+  border-radius: 13px;
+  background: #1ca6a6;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.trainer-content-brand > span:last-child {
+  display: grid;
+  gap: 1px;
+}
+
+.trainer-content-brand strong {
+  font-size: 22px;
+  line-height: 1.3;
+}
+
+.trainer-content-brand small {
+  color: #b8c9d9;
+  font-size: 11px;
+}
+
+.trainer-content-back {
+  color: #e3edf6 !important;
+  padding: 9px 14px;
+  border: 1px solid #50657c;
+  border-radius: 9px;
+  font-size: 12px;
+}
+
+.trainer-content-back:hover {
+  background: #1b3857;
+  text-decoration: none !important;
+}
+
+/* المحتوى العام */
+
+.trainer-content-main {
+  width: min(1240px, calc(100% - 36px));
+  margin: 0 auto;
+  padding: 38px 0 64px;
+}
+
+.trainer-content-heading {
+  margin-bottom: 27px;
+}
+
+.trainer-content-eyebrow {
+  display: inline-block;
+  color: #078b91;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 7px;
+}
+
+.trainer-content-heading h1,
+.trainer-content-manager-heading h2 {
+  margin: 0;
+  color: #122842;
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.trainer-content-heading p,
+.trainer-content-manager-heading p {
+  margin: 8px 0 0;
+  color: #718096;
+  line-height: 1.9;
+  max-width: 720px;
+}
+
+.trainer-content-manager {
+  margin-top: 38px;
+}
+
+.trainer-content-manager-heading {
+  margin-bottom: 23px;
+  padding-right: 15px;
+  border-right: 4px solid #1ca6a6;
+}
+
+/* التنبيهات */
+
+.trainer-content-alert {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 13px 16px;
+  margin: 16px 0;
+  border-radius: 11px;
+  line-height: 1.8;
+}
+
+.trainer-content-alert button {
+  flex-shrink: 0;
+  background: transparent;
+  border: 0;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.trainer-content-alert-error {
+  color: #9f3030;
+  background: #fff0ef;
+  border: 1px solid #f1d0cc;
+}
+
+.trainer-content-alert-success {
+  color: #176b50;
+  background: #eaf8f1;
+  border: 1px solid #c6e9d8;
+}
+
+/* بطاقات الدورات */
+
+.trainer-content-course-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.trainer-content-course-card {
+  min-width: 0;
+  padding: 22px;
+  background: #fff;
+  border: 1px solid #e2e9f1;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgb(22 42 67 / 4%);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.trainer-content-course-card-active {
+  border-color: #40b7b4;
+  box-shadow: 0 0 0 2px rgb(28 166 166 / 10%);
+}
+
+.trainer-content-course-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.trainer-content-course-label {
+  color: #078b91;
+  background: #e7f7f6;
+  padding: 5px 10px;
+  border-radius: 7px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.trainer-content-status {
+  display: inline-flex;
+  padding: 4px 9px;
+  border-radius: 7px;
+  background: #edf1f6;
+  color: #5c6b7e;
+  font-size: 11px;
+}
+
+.trainer-content-status.status-published {
+  color: #16734e;
+  background: #e6f6ed;
+}
+
+.trainer-content-status.status-draft {
+  color: #94630d;
+  background: #fff5dc;
+}
+
+.trainer-content-status.status-archived {
+  color: #667085;
+  background: #edf0f4;
+}
+
+.trainer-content-course-card h2 {
+  margin: 18px 0 6px;
+  color: #172e49;
+  font-size: 19px;
+  line-height: 1.7;
+}
+
+.trainer-content-course-description {
+  color: #718096;
+  line-height: 1.8;
+  min-height: 48px;
+  margin: 0 0 15px;
+}
+
+.trainer-content-course-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+  padding: 13px 0;
+  margin-top: auto;
+  color: #68788c;
+  font-size: 12px;
+  border-top: 1px solid #edf1f5;
+}
+
+.trainer-content-course-meta span {
+  min-width: 0;
+}
+
+.trainer-content-course-card > .trainer-content-primary-button {
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* الأزرار */
+
+.trainer-content-primary-button,
+.trainer-content-secondary-button,
+.trainer-content-danger-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 39px;
+  padding: 9px 15px;
+  border-radius: 9px;
+  font-weight: 600;
+  font-size: 12px;
+  border: 1px solid transparent;
+}
+
+.trainer-content-primary-button {
+  color: #fff;
+  background: #087f8c;
+  border-color: #087f8c;
+}
+
+.trainer-content-primary-button:hover:not(:disabled) {
+  background: #066b76;
+  border-color: #066b76;
+}
+
+.trainer-content-secondary-button {
+  color: #344a63;
+  background: #fff;
+  border-color: #d8e1eb;
+}
+
+.trainer-content-secondary-button:hover:not(:disabled) {
+  background: #f0f5f9;
+  border-color: #bdcbd9;
+}
+
+.trainer-content-danger-button {
+  color: #b63838;
+  background: #fff;
+  border-color: #f0d4d4;
+}
+
+.trainer-content-danger-button:hover:not(:disabled) {
+  background: #fff0ef;
+}
+
+.trainer-content-primary-button.compact,
+.trainer-content-secondary-button.compact,
+.trainer-content-danger-button.compact {
+  min-height: 32px;
+  padding: 6px 11px;
+  font-size: 11px;
+  border-radius: 8px;
+}
+
+/* اللوحات */
+
+.trainer-content-panel {
+  min-width: 0;
+  margin-top: 20px;
+  padding: clamp(16px, 2.5vw, 25px);
+  background: #fff;
+  border: 1px solid #e2e9f1;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgb(22 42 67 / 3%);
+}
+
+.trainer-content-panel h3 {
+  margin: 0;
+  color: #172e49;
+  font-size: 19px;
+}
+
+.trainer-content-panel-description,
+.trainer-content-section-heading p {
+  margin: 5px 0 0;
+  color: #7b8999;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.trainer-content-section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 18px;
+}
+
+.trainer-content-section-heading > div {
+  min-width: 0;
+}
+
+/* النماذج */
+
+.trainer-learning-form {
+  padding: 18px;
+  margin: 14px 0;
+  background: #f7fafc;
+  border: 1px solid #e1eaf1;
+  border-radius: 12px;
+}
+
+.trainer-learning-form h4 {
+  margin: 0 0 15px;
+  color: #19344e;
+  font-size: 14px;
+}
+
+.trainer-learning-form label,
+.trainer-content-panel > form label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+  margin-bottom: 13px;
+  color: #354a60;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.trainer-content-page input:not([type='file']),
+.trainer-content-page textarea,
+.trainer-content-page select {
+  width: 100%;
+  min-width: 0;
+  padding: 10px 12px;
+  color: #172e49;
+  background: #fff;
+  border: 1px solid #d9e2ec;
+  border-radius: 8px;
+  outline: none;
+  font-size: 12px;
+  font-weight: 400;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.trainer-content-page input:not([type='file']) {
+  min-height: 39px;
+}
+
+.trainer-content-page textarea {
+  resize: vertical;
+  min-height: 70px;
+  line-height: 1.8;
+}
+
+.trainer-content-page input:focus,
+.trainer-content-page textarea:focus,
+.trainer-content-page select:focus {
+  border-color: #1ca6a6;
+  box-shadow: 0 0 0 3px rgb(28 166 166 / 12%);
+}
+
+.trainer-content-page input[type='file'] {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  padding: 10px;
+  color: #5c6b7e;
+  background: #fff;
+  border: 1px dashed #c4d3e0;
+  border-radius: 8px;
+  font-size: 11px;
+}
+
+.trainer-learning-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 14px;
+}
+
+.trainer-learning-form-grid label {
+  min-width: 0;
+}
+
+.trainer-learning-form-grid .form-field-wide {
+  grid-column: 1 / -1;
+}
+
+.trainer-learning-form.compact-form {
+  padding: 16px;
+  margin: 13px 0;
+}
+
+.optional-label {
+  color: #8a97a7;
+  font-size: 10px;
+  font-weight: 400;
+}
+
+.trainer-content-form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 7px;
+}
+
+.trainer-content-upload-divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 14px 0;
+  color: #8794a4;
+  font-size: 11px;
+}
+
+.trainer-content-upload-divider::before,
+.trainer-content-upload-divider::after {
+  content: '';
+  height: 1px;
+  flex: 1;
+  background: #dfe7ee;
+}
+
+/* الأقسام */
+
+.trainer-learning-sections {
+  display: grid;
+  gap: 15px;
+}
+
+.trainer-learning-section {
+  min-width: 0;
+  padding: 17px;
+  border: 1px solid #e0e8f0;
+  border-radius: 13px;
+  background: #fff;
+}
+
+.trainer-learning-section-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.trainer-learning-section-number {
+  display: grid;
+  place-items: center;
+  flex: 0 0 38px;
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  background: #e7f6f5;
+  color: #087f8c;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.trainer-learning-section-title {
+  flex: 1;
+  min-width: 0;
+}
+
+.trainer-learning-section-title h4 {
+  margin: 0;
+  color: #19344e;
+  font-size: 15px;
+  overflow-wrap: anywhere;
+}
+
+.trainer-learning-section-title p {
+  margin: 5px 0;
+  color: #778698;
+  line-height: 1.8;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.trainer-learning-section-title small {
+  color: #078b91;
+  font-size: 11px;
+}
+
+.trainer-learning-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.trainer-learning-lectures {
+  margin-top: 17px;
+  padding-top: 14px;
+  border-top: 1px solid #edf1f5;
+}
+
+.trainer-learning-add-lecture {
+  width: 100%;
+  min-height: 38px;
+  margin-top: 12px;
+  padding: 8px 12px;
+  border: 1px dashed #9ccaca;
+  border-radius: 9px;
+  color: #087f8c;
+  background: #f6fbfb;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.trainer-learning-add-lecture:hover {
+  background: #eaf7f6;
+  border-color: #51afad;
+}
+
+/* المحاضرات */
+
+.trainer-learning-lecture {
+  min-width: 0;
+  padding: 15px;
+  margin-top: 12px;
+  border: 1px solid #e5ebf1;
+  border-radius: 11px;
+  background: #fbfcfe;
+}
+
+.trainer-learning-lecture-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.trainer-learning-lecture-icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+  color: #087f8c;
+  background: #e7f6f5;
+  border-radius: 9px;
+  font-size: 12px;
+}
+
+.trainer-learning-lecture-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.trainer-learning-lecture-info strong {
+  display: block;
+  color: #203951;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.trainer-learning-lecture-info small {
+  display: block;
+  margin-top: 3px;
+  color: #8b97a5;
+  font-size: 10px;
+}
+
+.trainer-learning-lecture-info p {
+  margin: 5px 0 0;
+  color: #718096;
+  font-size: 12px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+
+.trainer-learning-resource {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 13px;
+  padding: 12px;
+  border: 1px solid #e3eaf1;
+  border-radius: 9px;
+  background: #fff;
+}
+
+.trainer-learning-resource-info {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.trainer-learning-resource-info strong {
+  color: #344a60;
+  font-size: 12px;
+}
+
+.trainer-learning-resource-info small {
+  color: #8491a1;
+  font-size: 11px;
+}
+
+.trainer-learning-resource-info a {
+  font-size: 11px;
+  overflow-wrap: anywhere;
+}
+
+/* المرفقات */
+
+.trainer-learning-attachments-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 17px;
+  padding-top: 13px;
+  border-top: 1px solid #e9eef3;
+}
+
+.trainer-learning-attachments-heading > div {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.trainer-learning-attachments-heading strong {
+  color: #344a60;
+  font-size: 12px;
+}
+
+.trainer-learning-attachments-heading small {
+  color: #8794a4;
+  font-size: 11px;
+}
+
+.trainer-learning-attachment-list {
+  display: grid;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.trainer-learning-attachment {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid #e2e9f0;
+  border-radius: 9px;
+}
+
+.trainer-learning-file-icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: #edf4fb;
+  color: #365f88;
+  font-size: 18px;
+}
+
+.trainer-learning-attachment-info {
+  display: grid;
+  flex: 1;
+  min-width: 0;
+  gap: 4px;
+}
+
+.trainer-learning-attachment-info strong,
+.trainer-learning-attachment-info small {
+  overflow-wrap: anywhere;
+}
+
+.trainer-learning-attachment-info strong {
+  color: #344a60;
+  font-size: 12px;
+}
+
+.trainer-learning-attachment-info small {
+  color: #8794a4;
+  font-size: 10px;
+}
+
+.trainer-learning-attachment-info a {
+  font-size: 11px;
+}
+
+/* الجلسات */
+
+.trainer-learning-session-list {
+  display: grid;
+  gap: 10px;
+  margin: 14px 0;
+}
+
+.trainer-learning-session {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 14px;
+  border: 1px solid #e1e9f0;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.trainer-learning-session > div {
+  min-width: 0;
+}
+
+.trainer-learning-session strong {
+  color: #19344e;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.trainer-learning-session p {
+  margin: 5px 0;
+  color: #68788c;
+  font-size: 12px;
+}
+
+.trainer-learning-session small {
+  color: #078b91;
+  font-size: 11px;
+}
+
+/* حالات عدم وجود بيانات والتذييل */
+
+.trainer-content-empty {
+  padding: 25px 18px;
+  margin: 14px 0;
+  text-align: center;
+  color: #778698;
+  background: #f8fafc;
+  border: 1px dashed #d7e1eb;
+  border-radius: 11px;
+  line-height: 1.9;
+}
+
+.trainer-content-empty h2 {
+  margin: 0 0 6px;
+  color: #19344e;
+  font-size: 17px;
+}
+
+.trainer-content-empty p {
+  margin: 0 0 13px;
+  font-size: 12px;
+}
+
+.trainer-content-empty.small-empty {
+  padding: 16px;
+  font-size: 12px;
+}
+
+.trainer-content-footer {
+  padding: 22px 18px;
+  color: #7c8ca0;
+  text-align: center;
+  border-top: 1px solid #e2e9f1;
+  font-size: 11px;
+}
+
+/* الشاشات الصغيرة */
+
+@media (max-width: 760px) {
+  .trainer-content-header {
+    min-height: 70px;
+    padding: 12px 17px;
+  }
+
+  .trainer-content-brand strong {
+    font-size: 19px;
+  }
+
+  .trainer-content-back {
+    padding: 8px 10px;
+    font-size: 10px;
+  }
+
+  .trainer-content-main {
+    width: calc(100% - 24px);
+    padding-top: 25px;
+  }
+
+  .trainer-content-course-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .trainer-content-section-heading {
+    align-items: flex-start;
+  }
+
+  .trainer-learning-section-header {
+    flex-wrap: wrap;
+  }
+
+  .trainer-learning-section-title {
+    flex-basis: calc(100% - 55px);
+  }
+
+  .trainer-learning-section-header > .trainer-learning-actions {
+    width: 100%;
+    padding-right: 50px;
+  }
+
+  .trainer-learning-lecture-header {
+    flex-wrap: wrap;
+  }
+
+  .trainer-learning-lecture-info {
+    flex-basis: calc(100% - 50px);
+  }
+
+  .trainer-learning-lecture-header > .trainer-learning-actions {
+    width: 100%;
+    padding-right: 44px;
+  }
+
+  .trainer-learning-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .trainer-learning-form-grid .form-field-wide {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 460px) {
+  .trainer-content-header {
+    align-items: flex-start;
+  }
+
+  .trainer-content-back {
+    max-width: 130px;
+    text-align: center;
+  }
+
+  .trainer-content-section-heading {
+    flex-direction: column;
+  }
+
+  .trainer-learning-resource {
+    align-items: flex-start;
+  }
+
+  .trainer-learning-attachment {
+    flex-wrap: wrap;
+  }
+
+  .trainer-learning-attachment-info {
+    flex-basis: calc(100% - 55px);
+  }
+
+  .trainer-learning-attachment > .trainer-learning-actions {
+    width: 100%;
+    padding-right: 44px;
+  }
+
+  .trainer-learning-session {
+    align-items: flex-start;
+  }
+
+  .trainer-content-course-meta {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+

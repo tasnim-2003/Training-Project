@@ -1,3 +1,4 @@
+
 from datetime import datetime, timezone
 
 from fastapi import APIRouter, Depends, HTTPException, status
@@ -52,7 +53,7 @@ def create_enrollment(
     existing_enrollment = (
         db.query(Enrollment)
         .filter(
-            Enrollment.trainee_id == current_user["user_id"],
+            Enrollment.trainee_id == current_user["id"],
             Enrollment.course_id == course.id,
         )
         .first()
@@ -80,7 +81,7 @@ def create_enrollment(
         )
 
     enrollment = Enrollment(
-        trainee_id=current_user["user_id"],
+        trainee_id=current_user["id"],
         course_id=course.id,
         registered_at=datetime.now(timezone.utc),
         status="pending",
@@ -119,7 +120,7 @@ def get_my_enrollments(
             Course.id == Enrollment.course_id,
         )
         .filter(
-            Enrollment.trainee_id == current_user["user_id"]
+            Enrollment.trainee_id == current_user["id"]
         )
         .order_by(Enrollment.registered_at.desc())
         .all()

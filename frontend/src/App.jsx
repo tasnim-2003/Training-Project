@@ -1,15 +1,23 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import TraineeDashboard from './pages/TraineeDashboard'
+
 import Home from './pages/Home'
 import Programs from './pages/Programs'
 import ProgramDetails from './pages/ProgramDetails'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import ForgotPassword from './pages/ForgotPassword'
+import ResetPassword from './pages/ResetPassword'
 import Dashboard from './pages/Dashboard'
+import TraineeDashboard from './pages/TraineeDashboard'
+import TrainerDashboard from './pages/TrainerDashboard'
+import TrainerCourses from './pages/TrainerCourses'
 import CreateCourse from './pages/CreateCourse'
 import EditCourse from './pages/EditCourse'
-import AnalyticsDashboard from './pages/AnalyticsDashboard'
-
+import TrainerApplication from './pages/TrainerApplication'
+import EvaluationPage from './pages/EvaluationPage'
+import EvaluationList from './pages/EvaluationList'
+import EvaluationManagement from './pages/EvaluationManagement'
+import About from './pages/About'
 
 function Paths() {
   return (
@@ -20,18 +28,6 @@ function Paths() {
   )
 }
 
-
-function About() {
-  return (
-    <main dir="rtl">
-      <h1>عن أثر</h1>
-      <p>
-        أثر هو نظام إدارة الدورات التدريبية وقياس الأثر
-        لمنسوبي جامعة الملك سعود.
-      </p>
-    </main>
-  )
-}
 
 
 function CertificateVerification() {
@@ -46,7 +42,6 @@ function CertificateVerification() {
   )
 }
 
-
 function FAQ() {
   return (
     <main dir="rtl">
@@ -56,81 +51,70 @@ function FAQ() {
   )
 }
 
-
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<Home />} />
 
-        <Route
-          path="/"
-          element={<Home />}
-        />
-
-        <Route
-          path="/programs"
-          element={<Programs />}
-        />
-
-        <Route
-          path="/programs/:id"
-          element={<ProgramDetails />}
-        />
-
-        <Route
-          path="/paths"
-          element={<Paths />}
-        />
-
-        <Route
-          path="/about"
-          element={<About />}
-        />
+        <Route path="/programs" element={<Programs />} />
+        <Route path="/programs/:id" element={<ProgramDetails />} />
+        <Route path="/paths" element={<Paths />} />
+        <Route path="/about" element={<About />} />
 
         <Route
           path="/verify-certificate"
           element={<CertificateVerification />}
         />
 
+        <Route path="/faq" element={<FAQ />} />
+
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+
         <Route
-          path="/faq"
-          element={<FAQ />}
+          path="/forgot-password"
+          element={<ForgotPassword />}
         />
 
         <Route
-          path="/login"
-          element={<Login />}
+          path="/reset-password"
+          element={<ResetPassword />}
         />
 
         <Route
-          path="/register"
-          element={<Register />}
+          path="/trainer-application"
+          element={<TrainerApplication />}
+        />
+
+        {/* لوحة الإدارة */}
+        <Route path="/admin" element={<Dashboard />} />
+
+        {/* إدارة التقييمات */}
+        <Route
+          path="/admin/evaluations"
+          element={<EvaluationManagement />}
+        />
+
+        {/* مساحة المدرب */}
+        <Route path="/trainer" element={<TrainerDashboard />} />
+        <Route path="/trainer/courses" element={<TrainerCourses />} />
+
+        {/* مساحة المتدرب */}
+        <Route path="/trainee" element={<TraineeDashboard />} />
+
+        {/* تقييمات المتدرب */}
+        <Route
+          path="/trainee/evaluations"
+          element={<EvaluationList />}
         />
 
         <Route
-          path="/admin"
-          element={<Dashboard />}
+          path="/trainee/evaluations/:courseId"
+          element={<EvaluationPage />}
         />
 
-        <Route
-          path="/admin/analytics"
-          element={<AnalyticsDashboard />}
-        />
-
-
-        <Route
-          path="/trainer"
-          element={<Dashboard />}
-        />
-
-
-
-
-        <Route
-          path="/trainee"
-          element={<TraineeDashboard />}
-        />
-
+        {/* إدارة الدورات */}
         <Route
           path="/admin/courses/new"
           element={<CreateCourse />}
@@ -140,7 +124,6 @@ function App() {
           path="/admin/courses/:id/edit"
           element={<EditCourse />}
         />
-
       </Routes>
     </BrowserRouter>
   )

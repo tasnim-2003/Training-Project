@@ -95,7 +95,8 @@ class CourseResponse(BaseModel):
     objectives: str
 
     trainer_id: int | None
-
+    trainer_name: str | None = None
+    cover_image: str | None = None
     start_date: date
     end_date: date
 

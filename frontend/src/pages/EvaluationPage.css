@@ -1,0 +1,583 @@
+
+/* ==================================================
+   ATHAR | King Saud University
+   Trainee Evaluation Experience
+   ================================================== */
+
+.evaluation-page {
+  --ksu-blue: #00539b;
+  --ksu-dark: #003366;
+  --ksu-light: #e6f0fa;
+  --ksu-gold: #d4af37;
+  --page-bg: #f8fafc;
+  --text: #243449;
+  --muted: #68778a;
+  --border: #e8edf3;
+
+  min-height: 100vh;
+  background: var(--page-bg);
+  color: var(--text);
+  direction: rtl;
+  font-family: "Cairo", "Tahoma", sans-serif;
+}
+
+.evaluation-page *,
+.evaluation-page *::before,
+.evaluation-page *::after {
+  box-sizing: border-box;
+}
+
+/* Academic navigation */
+
+.evaluation-header {
+  position: relative;
+  z-index: 2;
+  min-height: 82px;
+  padding: 15px clamp(20px, 5.5vw, 84px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  background: #fff;
+  border-bottom: 3px solid var(--ksu-blue);
+  box-shadow: 0 3px 14px rgb(0 51 102 / 4%);
+}
+
+.evaluation-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+
+.evaluation-brand strong {
+  display: grid;
+  place-items: center;
+  width: 49px;
+  height: 49px;
+  border-radius: 7px;
+  color: white;
+  background: var(--ksu-dark);
+  font-size: 25px;
+  font-weight: 800;
+  box-shadow: inset 0 -3px 0 rgb(212 175 55 / 75%);
+}
+
+.evaluation-brand span {
+  color: var(--ksu-dark);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+}
+
+.evaluation-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 17px;
+  color: var(--ksu-blue);
+  background: #fff;
+  border: 1px solid #dce7f2;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: 180ms ease;
+}
+
+.evaluation-back-link::after {
+  content: "←";
+  font-size: 17px;
+}
+
+.evaluation-back-link:hover {
+  color: white;
+  background: var(--ksu-blue);
+  border-color: var(--ksu-blue);
+}
+
+/* Main page */
+
+.evaluation-container {
+  width: min(1200px, calc(100% - 56px));
+  margin-inline: auto;
+  padding: 36px 0 80px;
+}
+
+/* Intro banner */
+
+.evaluation-intro {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  margin-bottom: 32px;
+  padding: 39px 42px;
+  color: white;
+  background: linear-gradient(115deg, #00539b 0%, #003f7b 48%, #003366 100%);
+  border-radius: 8px;
+  box-shadow: 0 10px 26px rgb(0 51 102 / 12%);
+}
+
+.evaluation-intro::before {
+  position: absolute;
+  z-index: -1;
+  top: -115px;
+  left: -35px;
+  width: 330px;
+  height: 330px;
+  content: "";
+  border: 1px solid rgb(255 255 255 / 12%);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 34px rgb(255 255 255 / 4%),
+    0 0 0 70px rgb(255 255 255 / 3%);
+}
+
+.evaluation-intro::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 90px;
+  height: 4px;
+  content: "";
+  background: var(--ksu-gold);
+}
+
+.evaluation-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 13px;
+  color: #f0d98b;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.evaluation-eyebrow::before {
+  width: 23px;
+  height: 2px;
+  content: "";
+  background: var(--ksu-gold);
+}
+
+.evaluation-intro h1 {
+  margin: 0 0 13px;
+  color: #fff;
+  font-size: clamp(26px, 3.2vw, 37px);
+  font-weight: 800;
+  line-height: 1.55;
+  letter-spacing: -0.7px;
+}
+
+.evaluation-intro p {
+  max-width: 680px;
+  margin: 0;
+  color: rgb(255 255 255 / 83%);
+  font-size: 14px;
+  line-height: 2.1;
+}
+
+/* Alerts */
+
+.evaluation-alert {
+  margin-bottom: 24px;
+  padding: 15px 18px;
+  border: 1px solid;
+  border-radius: 7px;
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.evaluation-alert.error {
+  color: #a52b36;
+  background: #fff2f2;
+  border-color: #f2d1d3;
+}
+
+/* Loading and empty states */
+
+.evaluation-state {
+  display: flex;
+  min-height: 275px;
+  padding: 38px 24px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.evaluation-state-icon {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  margin-bottom: 19px;
+  color: var(--ksu-blue);
+  background: var(--ksu-light);
+  border-radius: 50%;
+  font-size: 27px;
+}
+
+.evaluation-state > strong {
+  color: var(--ksu-dark);
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.evaluation-state p {
+  max-width: 440px;
+  margin: 11px 0 22px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 2;
+}
+
+/* Summary metrics */
+
+.evaluation-summary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  margin-bottom: 38px;
+}
+
+.evaluation-summary article {
+  position: relative;
+  display: flex;
+  min-height: 133px;
+  padding: 23px 26px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-right: 4px solid var(--ksu-blue);
+  border-radius: 7px;
+  box-shadow: 0 3px 12px rgb(0 51 102 / 3%);
+}
+
+.evaluation-summary article:nth-child(2) {
+  border-right-color: var(--ksu-gold);
+}
+
+.evaluation-summary article span {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.evaluation-summary article strong {
+  color: var(--ksu-dark);
+  font-size: 35px;
+  font-weight: 800;
+  line-height: 1.25;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Course list */
+
+.evaluation-course-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.evaluation-course-card {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 118px;
+  padding: 22px 25px;
+  align-items: center;
+  gap: 21px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 3px 12px rgb(0 51 102 / 3%);
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.evaluation-course-card:hover {
+  border-color: #c8d9eb;
+  box-shadow: 0 8px 22px rgb(0 51 102 / 7%);
+  transform: translateY(-2px);
+}
+
+.evaluation-course-symbol {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  flex: 0 0 58px;
+  color: var(--ksu-blue);
+  background: var(--ksu-light);
+  border: 1px solid #d8e7f6;
+  border-radius: 8px;
+  font-size: 26px;
+}
+
+.evaluation-course-details {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.evaluation-course-details h2 {
+  margin: 0;
+  color: var(--ksu-dark);
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+
+.evaluation-status {
+  display: inline-flex;
+  min-height: 27px;
+  padding: 5px 10px;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.evaluation-status::before {
+  width: 6px;
+  height: 6px;
+  content: "";
+  background: currentColor;
+  border-radius: 50%;
+}
+
+.evaluation-status.available {
+  color: #176c50;
+  background: #eaf6ef;
+  border-color: #cfe8d8;
+}
+
+.evaluation-status.completed {
+  color: #315f91;
+  background: #edf4fb;
+  border-color: #d6e5f5;
+}
+
+.evaluation-status.unavailable {
+  color: #737f8d;
+  background: #f3f5f7;
+  border-color: #e5e9ee;
+}
+
+/* Buttons */
+
+.evaluation-primary-button {
+  display: inline-flex;
+  min-height: 43px;
+  padding: 11px 19px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #fff;
+  background: var(--ksu-blue);
+  border: 1px solid var(--ksu-blue);
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.evaluation-primary-button:hover {
+  color: #fff;
+  background: var(--ksu-dark);
+  border-color: var(--ksu-dark);
+  box-shadow: 0 4px 12px rgb(0 51 102 / 14%);
+}
+
+.evaluation-primary-button span {
+  font-size: 16px;
+}
+
+.evaluation-completed-mark {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  color: #176c50;
+  background: #eaf6ef;
+  border: 1px solid #cfe8d8;
+  border-radius: 50%;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+/* Keyboard accessibility */
+
+.evaluation-page a:focus-visible {
+  outline: 3px solid var(--ksu-gold);
+  outline-offset: 4px;
+}
+
+/* Responsive layout */
+
+@media (min-width: 1500px) {
+  .evaluation-container {
+    width: min(1280px, calc(100% - 100px));
+  }
+}
+
+@media (max-width: 760px) {
+  .evaluation-header {
+    min-height: 72px;
+    padding: 13px 20px;
+    gap: 12px;
+  }
+
+  .evaluation-brand {
+    gap: 10px;
+  }
+
+  .evaluation-brand strong {
+    width: 42px;
+    height: 42px;
+    font-size: 22px;
+  }
+
+  .evaluation-brand span {
+    max-width: 120px;
+    font-size: 11px;
+    line-height: 1.8;
+  }
+
+  .evaluation-back-link {
+    padding: 9px 11px;
+    font-size: 11px;
+  }
+
+  .evaluation-container {
+    width: calc(100% - 32px);
+    padding-top: 25px;
+  }
+
+  .evaluation-intro {
+    padding: 29px 24px;
+    margin-bottom: 24px;
+  }
+
+  .evaluation-intro h1 {
+    font-size: 27px;
+  }
+
+  .evaluation-intro p {
+    font-size: 13px;
+  }
+
+  .evaluation-summary {
+    gap: 12px;
+    margin-bottom: 27px;
+  }
+
+  .evaluation-summary article {
+    min-height: 112px;
+    padding: 17px;
+  }
+
+  .evaluation-summary article strong {
+    font-size: 30px;
+  }
+
+  .evaluation-course-card {
+    padding: 18px;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .evaluation-course-symbol {
+    width: 47px;
+    height: 47px;
+    flex-basis: 47px;
+    font-size: 22px;
+  }
+
+  .evaluation-course-details {
+    flex-basis: calc(100% - 65px);
+  }
+
+  .evaluation-course-details h2 {
+    font-size: 15px;
+  }
+
+  .evaluation-course-card > .evaluation-primary-button {
+    width: 100%;
+  }
+
+  .evaluation-course-card > .evaluation-completed-mark {
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 390px) {
+  .evaluation-header {
+    padding-inline: 12px;
+  }
+
+  .evaluation-brand span {
+    max-width: 94px;
+  }
+
+  .evaluation-back-link {
+    max-width: 140px;
+    text-align: center;
+  }
+
+  .evaluation-container {
+    width: calc(100% - 24px);
+  }
+
+  .evaluation-intro {
+    padding: 25px 18px;
+  }
+
+  .evaluation-intro h1 {
+    font-size: 24px;
+  }
+
+  .evaluation-summary article {
+    padding: 14px 11px;
+  }
+
+  .evaluation-summary article span {
+    font-size: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .evaluation-page *,
+  .evaluation-page *::before,
+  .evaluation-page *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
+

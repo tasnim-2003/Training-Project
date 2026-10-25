@@ -1,3 +1,4 @@
+
 from datetime import datetime
 from enum import Enum
 
@@ -10,6 +11,7 @@ class NotificationType(str, Enum):
     EVALUATION = "evaluation"
     IMPACT = "impact"
     CERTIFICATE = "certificate"
+    TRAINER_APPLICATION = "trainer_application"
 
 
 class NotificationCreate(BaseModel):
@@ -32,6 +34,4 @@ class NotificationResponse(BaseModel):
     is_read: bool
     created_at: datetime
 
-    model_config = {
-        "from_attributes": True
-    }
+    model_config = {"from_attributes": True}

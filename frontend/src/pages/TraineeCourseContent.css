@@ -1,0 +1,153 @@
+
+.trainee-learning-course {
+  width: 100%;
+  min-width: 0;
+  padding: 22px;
+  border: 1px solid #e1e9ef;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.trainee-learning-course + .trainee-learning-course {
+  margin-top: 20px;
+}
+
+.trainee-learning-course-title {
+  margin: 0 0 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e6edf2;
+  color: #075b80;
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+.trainee-learning-sections {
+  display: grid;
+  gap: 18px;
+}
+
+.trainee-learning-section {
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid #e7edf2;
+  border-radius: 12px;
+  background: #f9fbfc;
+}
+
+.trainee-learning-section > h4 {
+  margin: 0 0 14px;
+  color: #183b4e;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.trainee-learning-description {
+  margin: 8px 0 14px;
+  color: #657786;
+  font-size: 0.9rem;
+  line-height: 1.9;
+  white-space: pre-wrap;
+}
+
+.trainee-learning-lectures {
+  display: grid;
+  gap: 16px;
+}
+
+.trainee-learning-lecture {
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid #e4ebf0;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.trainee-learning-lecture h5 {
+  margin: 0;
+  color: #243f50;
+  font-size: 0.98rem;
+  line-height: 1.8;
+}
+
+.trainee-learning-video {
+  position: relative;
+  width: 100%;
+  margin-top: 14px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  background: #080d12;
+}
+
+.trainee-learning-video video,
+.trainee-learning-video iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  object-fit: contain;
+}
+
+.trainee-learning-attachments {
+  display: grid;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.trainee-learning-attachment {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  padding: 12px 14px;
+  border: 1px solid #e4ebf0;
+  border-radius: 8px;
+  background: #fff;
+  color: #075b80;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.trainee-learning-attachment:hover {
+  background: #f0f8fc;
+}
+
+.trainee-learning-attachment > span:first-child {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.trainee-learning-attachment small {
+  flex-shrink: 0;
+  color: #738392;
+}
+
+.trainee-learning-message {
+  margin: 12px 0;
+  color: #667887;
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+.trainee-learning-message.error {
+  color: #b42318;
+}
+
+@media (max-width: 600px) {
+  .trainee-learning-course {
+    padding: 14px;
+  }
+
+  .trainee-learning-section {
+    padding: 12px;
+  }
+
+  .trainee-learning-lecture {
+    padding: 12px;
+  }
+
+  .trainee-learning-attachment {
+    flex-wrap: wrap;
+  }
+}

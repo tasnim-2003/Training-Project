@@ -1,3 +1,4 @@
+
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { registerUser } from '../services/api'
@@ -31,7 +32,7 @@ function Register() {
     event.preventDefault()
 
     if (formData.password !== formData.confirmPassword) {
-      setError('كلمتا المرور غير متطابقتين')
+      setError('كلمتا المرور غير متطابقتين.')
       return
     }
 
@@ -40,14 +41,14 @@ function Register() {
 
     try {
       await registerUser({
-        name: formData.name,
-        email: formData.email,
+        name: formData.name.trim(),
+        email: formData.email.trim(),
         password: formData.password,
       })
 
-      navigate('/login')
-    } catch (error) {
-      setError(error.message)
+      navigate('/login', { replace: true })
+    } catch (err) {
+      setError(err.message || 'تعذر إنشاء الحساب. حاولي مرة أخرى.')
     } finally {
       setIsLoading(false)
     }
@@ -59,20 +60,16 @@ function Register() {
         <div className="register-form-wrapper">
           <div className="register-heading">
             <span>منصة أثر</span>
-
-            <h2>إنشاء حساب</h2>
-
+            <h2>إنشاء حساب جديد</h2>
             <p>
-              أنشئ حسابك للانضمام إلى البرامج التدريبية المتاحة
+              أنشئ حسابك لاستكشاف البرامج التدريبية المتاحة لمنسوبي
+              جامعة الملك سعود.
             </p>
           </div>
 
           <form className="register-form" onSubmit={handleSubmit}>
             <div className="register-field">
-              <label htmlFor="name">
-                الاسم الكامل
-              </label>
-
+              <label htmlFor="name">الاسم الكامل</label>
               <input
                 id="name"
                 name="name"
@@ -81,32 +78,28 @@ function Register() {
                 autoComplete="name"
                 value={formData.name}
                 onChange={handleChange}
+                maxLength={150}
                 required
               />
             </div>
 
             <div className="register-field">
-              <label htmlFor="email">
-                البريد الإلكتروني
-              </label>
-
+              <label htmlFor="email">البريد الإلكتروني</label>
               <input
                 id="email"
                 name="email"
                 type="email"
-                placeholder="name@example.com"
+                placeholder="أدخل بريدك الإلكتروني"
                 autoComplete="email"
                 value={formData.email}
                 onChange={handleChange}
+                maxLength={254}
                 required
               />
             </div>
 
             <div className="register-field">
-              <label htmlFor="password">
-                كلمة المرور
-              </label>
-
+              <label htmlFor="password">كلمة المرور</label>
               <input
                 id="password"
                 name="password"
@@ -120,12 +113,9 @@ function Register() {
             </div>
 
             <div className="register-field">
-              <label htmlFor="confirm-password">
-                تأكيد كلمة المرور
-              </label>
-
+              <label htmlFor="confirmPassword">تأكيد كلمة المرور</label>
               <input
-                id="confirm-password"
+                id="confirmPassword"
                 name="confirmPassword"
                 type="password"
                 placeholder="أعد إدخال كلمة المرور"
@@ -164,22 +154,21 @@ function Register() {
 
       <section className="register-brand-panel">
         <div className="register-brand-content">
-          <div className="register-brand">
+          <Link to="/" className="register-brand">
             <strong>أثر</strong>
             <span>من التعلم إلى التغيير</span>
-          </div>
+          </Link>
 
           <div className="register-message">
             <span>ابدأ رحلتك</span>
-
             <h1>
               خطوتك الأولى
               <br />
               <strong>تبدأ من هنا</strong>
             </h1>
-
             <p>
-              أنشئ حسابك، واستكشف البرامج التدريبية وابدأ رحلة التطور
+              استكشف البرامج التدريبية، واكتسب المعرفة، وحوّل ما تتعلمه
+              إلى أثر ملموس.
             </p>
           </div>
 

@@ -97,6 +97,6 @@ class SessionResponse(BaseModel):
     attendance_open_at: datetime
     attendance_close_at: datetime
 
-    model_config = {
+    model_config = {  
         "from_attributes": True
     }

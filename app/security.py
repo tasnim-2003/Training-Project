@@ -1,23 +1,24 @@
+
 import os
 from datetime import datetime, timedelta, timezone
 
 from jose import JWTError, jwt
 
 
-SECRET_KEY = os.getenv(
-    "JWT_SECRET_KEY",
-    "change-this-secret-key-before-production",
-)
+SECRET_KEY = os.getenv("JWT_SECRET_KEY", "").strip()
+
+if len(SECRET_KEY) < 32:
+    raise RuntimeError(
+        "JWT_SECRET_KEY must be configured with a strong secret "
+        "of at least 32 characters."
+    )
 
 ALGORITHM = "HS256"
 
-ACCESS_TOKEN_EXPIRE_MINUTES = 60
+ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
 
-def create_access_token(
-    user_id: int,
-    role: str,
-):
+def create_access_token(user_id: int, role: str):
     expire = datetime.now(timezone.utc) + timedelta(
         minutes=ACCESS_TOKEN_EXPIRE_MINUTES
     )
@@ -46,11 +47,20 @@ def decode_access_token(token: str):
         user_id = payload.get("sub")
         role = payload.get("role")
 
-        if user_id is None or role is None:
+        if user_id is None or role not in {
+            "admin",
+            "trainer",
+            "trainee",
+        }:
+            return None
+
+        parsed_user_id = int(user_id)
+
+        if parsed_user_id <= 0:
             return None
 
         return {
-            "user_id": int(user_id),
+            "id": parsed_user_id,
             "role": role,
         }
 
